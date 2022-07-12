@@ -74,36 +74,3 @@ vector<CourseEntry> PhoneBook::findByCourse(string course) {
   return list;
 
 }
-
-void PhoneBook::addEntry(string first,string last,string phone, string type){
-  sql::Driver* driver = sql::mysql::get_driver_instance();
-  std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
-  con->setSchema(database);
-  std::auto_ptr<sql::Statement> stmt(con->createStatement());
-  if(type != "Friend" && type != "Family" && type!="Business"){
-      type="Other";
-  }
-  stmt->execute("INSERT INTO PhoneBook(First,Last,Phone,Type) VALUES ('"+first+"','"+last+"','"+phone+"','"+type+"')");
-}
-
-
-void PhoneBook::editEntry(string idnum,string first,string last,string phone, string type){
-  sql::Driver* driver = sql::mysql::get_driver_instance();
-  std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
-  con->setSchema(database);
-  std::auto_ptr<sql::Statement> stmt(con->createStatement());
-  if(type != "Friend" && type != "Family" && type!="Business"){
-    type="Other";
-  }
-  stmt->execute("UPDATE PhoneBook SET First = '"+first+"', Last ='"+last+"', Phone ='"+phone+"', Type ='"+type+"' WHERE ID='"+idnum+"'");
-}
-
-
-void PhoneBook::deleteEntry(string idnum){
-  sql::Driver* driver = sql::mysql::get_driver_instance();
-  std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
-  con->setSchema(database);
-  std::auto_ptr<sql::Statement> stmt(con->createStatement());
-
-  stmt->execute("DELETE FROM PhoneBook WHERE ID='"+idnum+"'");
-}

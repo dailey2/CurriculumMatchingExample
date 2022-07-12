@@ -148,7 +148,7 @@ function addEntry(){
     console.log("Subject:" + $('#addsubject').val());
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?afname='+$('#addsubject').val()+'&aschoolname='+$('#addschoolname').val()+'&acoursename='+$('#coursename').val()+'&acredits='+$('#addcredits').text()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?asubject='+$('#addsubject').val()+'&aschoolname='+$('#addschoolname').val()+'&acoursename='+$('#coursename').val()+'&acredits='+$('#addcredits').text()+'&operation='+operation,
 	dataType: 'text',
 	success: processAdd,
 	error: function(){alert("Error: Something went wrong");}

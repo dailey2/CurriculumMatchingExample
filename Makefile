@@ -2,7 +2,7 @@
 # For CSC3004 Software Development
 
 # Put your user name below:
-USER= skon
+USER= dailey2
 
 CC= g++
 

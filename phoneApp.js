@@ -16,14 +16,14 @@ $(document).ready(function () {
 	    $(this).parents(".dropdown").find('.selection').text($(this).text());
 	    operation=$(this).text();
 	    console.log("Main-menu");
-	    changeOperation(operation);	    
+	    changeOperation(operation);
 	} else if ($(this).hasClass("add-item")) {
 	    $(this).parents(".dropdown").find('.selection').text($(this).text());
 	    console.log($(this).text());
 	} else if ($(this).hasClass("edit-item")) {
 	    $(this).parents(".dropdown").find('.selection').text($(this).text());
 	    console.log($(this).text());
-	} 	
+	}
     });
 });
 
@@ -43,7 +43,7 @@ function changeOperation(operation){
 	$('.inputdata').hide();
 	$('.results').show();
 	$('.searchbox').show();
-    }    
+    }
 }
 
 // Build output table from comma delimited list
@@ -62,7 +62,7 @@ function buildTable(list) {
 	    result += "<button type='button' ID='"+a[i+4]+"' class='btn btn-primary btn-sm delete'>Delete</button></td></tr>";
 	}
 	result += "</table>";
-	
+
 	return result;
     }
 }
@@ -91,7 +91,7 @@ function editEntry(){
     console.log("Firstname:" + $('#editfirst').val() + "ID:" + editid);
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/skon_phoneAppComplete.cgi?editid='+editid +'&editfname='+$('#editfirst').val()+'&editlname='+$('#editlast').val()+'&editphone='+$('#editphone').val()+'&edittype='+$('#edittype').text()+'&operation=edit',
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?editid='+editid +'&editfname='+$('#editfirst').val()+'&editlname='+$('#editlast').val()+'&editphone='+$('#editphone').val()+'&edittype='+$('#edittype').text()+'&operation=edit',
 	dataType: 'text',
 	success: editDone(),
 	error: function(){alert("Error: Something went wrong");}
@@ -104,7 +104,7 @@ function processDelete(){
     $('#searchresults').empty();
     var id=$(this).attr('ID');
     $.ajax({
-	url: '/cgi-bin/skon_phoneAppComplete.cgi?deleteid='+$(this).attr('ID')+'&operation=delete',
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?deleteid='+$(this).attr('ID')+'&operation=delete',
 	dataType: 'text',
 	success: function(){alert("Deleted Record: " +id );},
 	error: function(){alert("Error: Something went wrong");}
@@ -126,7 +126,7 @@ function getMatches(){
     $('.editdata').hide();
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/skon_phoneAppComplete.cgi?find='+$('#search').val()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?find='+$('#search').val()+'&operation='+operation,
 	dataType: 'text',
 	success: processResults,
 	error: function(){alert("Error: Something went wrong");}
@@ -140,7 +140,7 @@ function processAdd(results) {
     $('#addfirst').val('');
     $('#addlast').val('');
     $('#addphone').val('');
-    
+
 }
 
 function addEntry(){
@@ -148,12 +148,9 @@ function addEntry(){
     console.log("Firstname:" + $('#addfirst').val());
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/skon_phoneAppComplete.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
 	dataType: 'text',
 	success: processAdd,
 	error: function(){alert("Error: Something went wrong");}
     });
 }
-
-
-    

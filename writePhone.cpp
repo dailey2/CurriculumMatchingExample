@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 /* uncomment for applications that use vectors */
-/*#include <vector>*/
+#include <vector>
 
 #include "mysql_connection.h"
 #include "mysql_driver.h"
@@ -16,8 +16,8 @@
 #include <cppconn/prepared_statement.h>
 
 #define HOST "localhost"
-#define USER "skon"
-#define DB "skon"
+#define USER "dailey2"
+#define DB "CurriculumMatchingExample"
 
 using namespace std;
 //using namespace sql::mysql;

@@ -4,27 +4,9 @@ var operation;  // operation
 var editid;
 
 $(document).ready(function () {
-    $('.editdata').hide();
     $("#search-btn").click(getMatches);
-    $("#add-btn").click(addEntry);
     operation = "Find School";
     $("#clear").click(clearResults);
-
-    $(".dropdown-menu a").click(function(){
-	console.log("pick!"+$(this).text());
-	if ( $(this).hasClass("main-menu") ) {
-	    $(this).parents(".dropdown").find('.selection').text($(this).text());
-	    operation=$(this).text();
-	    console.log("Main-menu");
-	    changeOperation(operation);
-	} else if ($(this).hasClass("add-item")) {
-	    $(this).parents(".dropdown").find('.selection').text($(this).text());
-	    console.log($(this).text());
-	} else if ($(this).hasClass("edit-item")) {
-	    $(this).parents(".dropdown").find('.selection').text($(this).text());
-	    console.log($(this).text());
-	}
-    });
 });
 
 changeOperation(operation);

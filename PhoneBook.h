@@ -28,9 +28,9 @@ using namespace std;
 class PhoneBook {
 public:
     PhoneBook();
-    vector<PhoneEntry> findByFirst(string first);
-    vector<PhoneEntry> findByLast(string last);
-    vector<PhoneEntry> findByType(string type);
+    vector<CourseEntry> findByCourse(string course);
+    vector<CourseEntry> findBySchool(string school);
+    vector<CourseEntry> findByCourse(string course);
     void addEntry(string first,string last,string phone,string type);
     void editEntry(string idnum,string first,string last,string phone,string type);
     void deleteEntry(string idnum);

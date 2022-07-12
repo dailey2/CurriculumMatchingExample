@@ -4,14 +4,14 @@ using namespace std;
 #ifndef PHONEENTRY_H
 #define PHONEENTRY_H
 
-class PhoneEntry {
+class CourseEntry {
 public:
-     PhoneEntry();
-     PhoneEntry(string f, string l, string p, string t,string I);
-     string first;
-     string last;
-     string phone;
-     string type;
+     CourseEntry();
+     CourseEntry(string sub, string schl, string crs, string cred,string I);
+     string subject;
+     string school;
+     string course;
+     string credits;
      string ID;
 
 private:
@@ -19,4 +19,3 @@ private:
 };
 
 #endif /* PHONEENTRY_H */
-

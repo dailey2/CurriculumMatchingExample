@@ -13,7 +13,7 @@ using namespace std;
 
 int main(){
     PhoneBook pb;
-    vector<PhoneEntry> pbResults;
+    vector<CourseEntry> pbResults;
     char o;
 
     cout << "Phone Book test program" << endl;
@@ -27,7 +27,7 @@ int main(){
         string firstMatch;
         cin >> firstMatch;
 
-        pbResults = pb.findByFirst(firstMatch);
+        pbResults = pb.findBySubject(firstMatch);
 
         for (int i = 0; i<pbResults.size(); i++) {
         	cout << pbResults.at(i).ID << ". "
@@ -43,7 +43,7 @@ int main(){
         string lastMatch;
         cin >> lastMatch;
 
-        pbResults = pb.findByLast(lastMatch);
+        pbResults = pb.findBySchool(lastMatch);
 
         for (int i = 0; i<pbResults.size(); i++) {
           cout << pbResults.at(i).ID << ". "
@@ -57,7 +57,7 @@ int main(){
         cout << "Enter type to find:";
         string typeMatch;
         cin >> typeMatch;
-        pbResults = pb.findByType(typeMatch);
+        pbResults = pb.findByCourse(typeMatch);
 
         for (int i = 0; i<pbResults.size(); i++) {
           cout << pbResults.at(i).ID << ". "

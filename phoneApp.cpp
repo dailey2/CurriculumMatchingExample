@@ -23,7 +23,7 @@ int main() {
   char *cstr;
 
   PhoneBook pb; // Phone Book SQL Interface Object
-  vector<PhoneEntry> pbResults;
+  vector<CourseEntry> pbResults;
 
   // Create AJAX objects to recieve information from web page.
   form_iterator op = cgi.getElement("operation");

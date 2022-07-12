@@ -31,9 +31,7 @@ public:
     vector<CourseEntry> findBySubject(string subject);
     vector<CourseEntry> findBySchool(string school);
     vector<CourseEntry> findByCourse(string course);
-    void addEntry(string first,string last,string phone,string type);
-    void editEntry(string idnum,string first,string last,string phone,string type);
-    void deleteEntry(string idnum);
+
 private:
     const string url=HOST;
     const string user=USER;

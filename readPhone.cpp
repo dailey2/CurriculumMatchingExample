@@ -16,8 +16,8 @@
 #include <cppconn/prepared_statement.h>
 
 #define HOST "localhost"
-#define USER "skon"
-#define DB "skon"
+#define USER "dailey2"
+#define DB "CurriculumMatchingExample"
 
 using namespace std;
 //using namespace sql::mysql;
@@ -46,10 +46,10 @@ int main()
     do {
       res.reset(stmt->getResultSet());
       while (res->next()) {
-	cout << res->getString("First") << " "
-	     << res->getString("Last") << " "
-	     << res->getString("Phone") << " "
-	     << res->getString("Type")
+	cout << res->getString("Subject") << " "
+	     << res->getString("SchoolName") << " "
+	     << res->getString("CourseName") << " "
+	     << res->getString("Credits")
 	     << endl;
       }
     } while (stmt->getMoreResults());

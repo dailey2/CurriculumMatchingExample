@@ -91,7 +91,7 @@ function editEntry(){
     console.log("Subject:" + $('#editsubject').val() + "ID:" + editid);
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?editid='+editid +'&editsubject='+$('#editsubject').val()+'&editschoolname='+$('#editschoolname').val()+'&editcoursename='+$('#editcoursename').val()+'&editcredits='+$('#editcredits').text()+'&operation=edit',
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?editid='+editid +'&editsubject='+$('#editsubject').val()+'&editschoolname='+$('#editschoolname').val()+'&editcoursename='+$('#editcoursename').val()+'&editcredits='+$('#editcredits').text()+'&operation=edit',
 	dataType: 'text',
 	success: editDone(),
 	error: function(){alert("Error: Something went wrong");}
@@ -104,7 +104,7 @@ function processDelete(){
     $('#searchresults').empty();
     var id=$(this).attr('ID');
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?deleteid='+$(this).attr('ID')+'&operation=delete',
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?deleteid='+$(this).attr('ID')+'&operation=delete',
 	dataType: 'text',
 	success: function(){alert("Deleted Record: " +id );},
 	error: function(){alert("Error: Something went wrong");}
@@ -126,7 +126,7 @@ function getMatches(){
     $('.editdata').hide();
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?find='+$('#search').val()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?find='+$('#search').val()+'&operation='+operation,
 	dataType: 'text',
 	success: processResults,
 	error: function(){alert("Error: Something went wrong");}
@@ -148,7 +148,7 @@ function addEntry(){
     console.log("Subject:" + $('#addsubject').val());
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?afname='+$('#addsubject').val()+'&aschoolname='+$('#addschoolname').val()+'&acoursename='+$('#coursename').val()+'&acredits='+$('#addcredits').text()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?afname='+$('#addsubject').val()+'&aschoolname='+$('#addschoolname').val()+'&acoursename='+$('#coursename').val()+'&acredits='+$('#addcredits').text()+'&operation='+operation,
 	dataType: 'text',
 	success: processAdd,
 	error: function(){alert("Error: Something went wrong");}

@@ -36,7 +36,7 @@ int main() {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
 
-    pbResults = pb.findByLast(search);
+    pbResults = pb.findBySubject(search);
     if (pbResults.size() > 0) {
       output = "success";
       for (int i = 0; i<pbResults.size(); i++) {
@@ -55,7 +55,7 @@ int main() {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
 
-    pbResults = pb.findByFirst(search);
+    pbResults = pb.findBySchool(search);
     if (pbResults.size() > 0) {
       output = "success";
       for (int i = 0; i<pbResults.size(); i++) {
@@ -73,7 +73,7 @@ int main() {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
 
-    pbResults = pb.findByType(search);
+    pbResults = pb.findByCourse(search);
     if (pbResults.size() > 0) {
       output = "success";
       for (int i = 0; i<pbResults.size(); i++) {

@@ -89,15 +89,15 @@ int main() {
   }
 
   if(operation=="Add Entry"){
-    form_iterator afnameString = cgi.getElement("asubject");
-    form_iterator alnameString = cgi.getElement("aschoolname");
-    form_iterator addphoneString = cgi.getElement("acoursename");
+    form_iterator asubjectString = cgi.getElement("asubject");
+    form_iterator aschoolnameString = cgi.getElement("aschoolname");
+    form_iterator acoursenameString = cgi.getElement("acoursename");
     form_iterator addtypeString = cgi.getElement("acredits");
 
     string addsubject=**asubjectString;
     string addschoolname=**aschoolnameString;
-    string addcoursename=**addcoursenameString;
-    string addcredits=**addcreditsString;
+    string addcoursename=**acoursenameString;
+    string addcredits=**acreditsString;
 
     pb.addEntry(addsubject,addschoolname,addcoursename,addcredits);
     output="success";

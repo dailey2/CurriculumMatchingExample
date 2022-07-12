@@ -1,13 +1,13 @@
 
 #include "PhoneEntry.h"
 
-PhoneEntry::PhoneEntry() {
+CourseEntry::CourseEntry() {
 }
 
-PhoneEntry::PhoneEntry(string f, string l, string p, string t, string I) {
-    first = f;
-    last = l;
-    phone = p;
-    type = t;
+CourseEntry::CourseEntry(string sub, string schl, string crs, string cred, string I) {
+    subject = sub;
+    school = schl;
+    course = crs;
+    credits = cred;
     ID=I;
 }

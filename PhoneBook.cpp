@@ -6,20 +6,20 @@
 PhoneBook::PhoneBook() {
 
 }
-  vector<PhoneEntry> PhoneBook::findByLast(string last) {
+  vector<CourseEntry> PhoneBook::findBySchool(string school) {
     sql::Driver* driver = sql::mysql::get_driver_instance();
     std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
     con->setSchema(database);
     std::auto_ptr<sql::Statement> stmt(con->createStatement());
 
-    vector<PhoneEntry> list;
-    stmt->execute("SELECT * FROM PhoneBook WHERE Last like '%"+last+"%'");
+    vector<CourseEntry> list;
+    stmt->execute("SELECT * FROM CurriculumMatchingExample WHERE SchoolName like '%"+school+"%'");
     std::auto_ptr< sql::ResultSet > res;
     do {
       res.reset(stmt->getResultSet());
       while (res->next()) {
-          PhoneEntry entry(res->getString("First"),res->getString("Last"),
-			   res->getString("Phone"),res->getString("Type"),
+          CourseEntry entry(res->getString("Subject"),res->getString("SchooName"),
+			   res->getString("CourseName"),res->getString("Credits"),
 	    res->getString("ID"));
 
 	  list.push_back(entry);
@@ -30,20 +30,20 @@ PhoneBook::PhoneBook() {
 
 }
 
-vector<PhoneEntry> PhoneBook::findByFirst(string first) {
+vector<CourseEntry> PhoneBook::findBySubject(string subject) {
   sql::Driver* driver = sql::mysql::get_driver_instance();
   std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
   con->setSchema(database);
   std::auto_ptr<sql::Statement> stmt(con->createStatement());
 
-  vector<PhoneEntry> list;
-  stmt->execute("SELECT * FROM PhoneBook WHERE First like '%"+first+"%'");
+  vector<CourseEntry> list;
+  stmt->execute("SELECT * FROM CurriculumMatchingExample WHERE Subject like '%"+subject+"%'");
   std::auto_ptr< sql::ResultSet > res;
   do {
     res.reset(stmt->getResultSet());
     while (res->next()) {
-      PhoneEntry entry(res->getString("First"),res->getString("Last"),
-		       res->getString("Phone"),res->getString("Type"),
+      CourseEntry entry(res->getString("Subject"),res->getString("SchoolName"),
+		       res->getString("CourseName"),res->getString("Credits"),
 	res->getString("ID"));
         list.push_back(entry);
 
@@ -52,20 +52,20 @@ vector<PhoneEntry> PhoneBook::findByFirst(string first) {
   return list;
 
 }
-vector<PhoneEntry> PhoneBook::findByType(string type) {
+vector<CourseEntry> PhoneBook::findByCourse(string course) {
   sql::Driver* driver = sql::mysql::get_driver_instance();
   std::auto_ptr<sql::Connection> con(driver->connect(url, user, pass));
   con->setSchema(database);
   std::auto_ptr<sql::Statement> stmt(con->createStatement());
 
-  vector<PhoneEntry> list;
-  stmt->execute("SELECT * FROM PhoneBook WHERE Type like '%"+type+"%'");
+  vector<CourseEntry> list;
+  stmt->execute("SELECT * FROM CurriculumMatchingExample WHERE CourseName like '%"+course+"%'");
   std::auto_ptr< sql::ResultSet > res;
   do {
     res.reset(stmt->getResultSet());
     while (res->next()) {
-      PhoneEntry entry(res->getString("First"),res->getString("Last"),
-		       res->getString("Phone"),res->getString("Type"),
+      CourseEntry entry(res->getString("Subject"),res->getString("SchoolName"),
+		       res->getString("CourseName"),res->getString("Credits"),
 	res->getString("ID"));
       list.push_back(entry);
 

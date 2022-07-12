@@ -77,10 +77,10 @@ function processEdit(){
     console.log("Subject: "+ $(row).find('.subject').text()+":"+$(row).find('.type').text());
     editid=$(this).attr('ID');
 
-    $('#editsubject').val( $(row).find('.first').text());
-    $('#editschoolname').val( $(row).find('.last').text());
-    $('#editcoursename').val( $(row).find('.phone').text());
-    $('#editcredits').text( $(row).find('.type').text());
+    $('#editsubject').val( $(row).find('.subject').text());
+    $('#editschoolname').val( $(row).find('.schoolName').text());
+    $('#editcoursename').val( $(row).find('.courseName').text());
+    $('#editcredits').text( $(row).find('.credits').text());
 }
 
 function editDone() {
@@ -91,7 +91,7 @@ function editEntry(){
     console.log("Subject:" + $('#editsubject').val() + "ID:" + editid);
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?editid='+editid +'&editfname='+$('#editfirst').val()+'&editlname='+$('#editlast').val()+'&editphone='+$('#editphone').val()+'&edittype='+$('#edittype').text()+'&operation=edit',
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?editid='+editid +'&editsubject='+$('#editsubject').val()+'&editschoolname='+$('#editschoolname').val()+'&editcoursename='+$('#editcoursename').val()+'&editcredits='+$('#editcredits').text()+'&operation=edit',
 	dataType: 'text',
 	success: editDone(),
 	error: function(){alert("Error: Something went wrong");}
@@ -136,19 +136,19 @@ function getMatches(){
 function processAdd(results) {
     $('#addmessage').empty();
     console.log("Add:",results);
-    $('#addmessage').text($('#addfirst').val()+" "+$('#addlast').val()+ " ADDED");
-    $('#addfirst').val('');
-    $('#addlast').val('');
-    $('#addphone').val('');
+    $('#addmessage').text($('#addsubject').val()+" "+$('#addschoolname').val()+ " ADDED");
+    $('#addsubject').val('');
+    $('#addschoolname').val('');
+    $('#addcoursename').val('');
 
 }
 
 function addEntry(){
     console.log("Attempting to add an entry");
-    console.log("Firstname:" + $('#addfirst').val());
+    console.log("Subject:" + $('#addsubject').val());
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?afname='+$('#addsubject').val()+'&aschoolname='+$('#addschoolname').val()+'&acoursename='+$('#coursename').val()+'&acredits='+$('#addcredits').text()+'&operation='+operation,
 	dataType: 'text',
 	success: processAdd,
 	error: function(){alert("Error: Something went wrong");}

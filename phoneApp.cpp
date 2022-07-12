@@ -16,7 +16,7 @@
 using namespace std;
 using namespace cgicc; // Needed for AJAX functions.
 
-ofstream logfile; 
+ofstream logfile;
 
 int main() {
   Cgicc cgi;    // Ajax object
@@ -24,7 +24,7 @@ int main() {
 
   PhoneBook pb; // Phone Book SQL Interface Object
   vector<PhoneEntry> pbResults;
-  
+
   // Create AJAX objects to recieve information from web page.
   form_iterator op = cgi.getElement("operation");
   string operation = **op;
@@ -32,18 +32,18 @@ int main() {
   logfile << "Op:" << operation << endl;
   logfile.close();
   string output = "Error = "+operation+ " - Operation not support yet!";
-  if (operation == "Find Last") {
+  if (operation == "Find Subject") {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
-    
+
     pbResults = pb.findByLast(search);
     if (pbResults.size() > 0) {
       output = "success";
       for (int i = 0; i<pbResults.size(); i++) {
-	output += "," + pbResults.at(i).first + ","
-	  + pbResults.at(i).last + ","
-	  + pbResults.at(i).phone + ","
-	  + pbResults.at(i).type + ","
+	output += "," + pbResults.at(i).subject + ","
+	  + pbResults.at(i).schoolName + ","
+	  + pbResults.at(i).courseName + ","
+	  + pbResults.at(i).credits + ","
 	  + pbResults.at(i).ID;
       }
     } else {
@@ -51,36 +51,36 @@ int main() {
     }
   }
 
-  if (operation == "Find First") {
+  if (operation == "Find School") {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
-    
+
     pbResults = pb.findByFirst(search);
     if (pbResults.size() > 0) {
       output = "success";
       for (int i = 0; i<pbResults.size(); i++) {
-	output += "," + pbResults.at(i).first + ","
-	  + pbResults.at(i).last + ","
-	  + pbResults.at(i).phone + ","
-	  + pbResults.at(i).type + ","
+	output += "," + pbResults.at(i).subject + ","
+	  + pbResults.at(i).schoolName + ","
+	  + pbResults.at(i).courseName + ","
+	  + pbResults.at(i).credits + ","
 	  + pbResults.at(i).ID;
       }
     } else {
       output = "No Match Found";
     }
   }
-  if (operation == "Find Type") {
+  if (operation == "Find Course") {
     form_iterator searchString = cgi.getElement("find");
     string search = **searchString;
-    
+
     pbResults = pb.findByType(search);
     if (pbResults.size() > 0) {
       output = "success";
       for (int i = 0; i<pbResults.size(); i++) {
-	output += "," + pbResults.at(i).first + ","
-	  + pbResults.at(i).last + ","
-	  + pbResults.at(i).phone + ","
-	  + pbResults.at(i).type + ","
+	output += "," + pbResults.at(i).subject + ","
+	  + pbResults.at(i).schoolName + ","
+	  + pbResults.at(i).courseName + ","
+	  + pbResults.at(i).credits + ","
 	  + pbResults.at(i).ID;
       }
     } else {
@@ -89,20 +89,20 @@ int main() {
   }
 
   if(operation=="Add Entry"){
-    form_iterator afnameString = cgi.getElement("afname");
-    form_iterator alnameString = cgi.getElement("alname");
-    form_iterator addphoneString = cgi.getElement("aphone");
-    form_iterator addtypeString = cgi.getElement("atype");
+    form_iterator afnameString = cgi.getElement("asubject");
+    form_iterator alnameString = cgi.getElement("aschoolname");
+    form_iterator addphoneString = cgi.getElement("acoursename");
+    form_iterator addtypeString = cgi.getElement("acredits");
 
-    string addfname=**afnameString;
-    string addlname=**alnameString;
-    string addphone=**addphoneString;
-    string addtype=**addtypeString;
+    string addsubject=**asubjectString;
+    string addschoolname=**aschoolnameString;
+    string addcoursename=**addcoursenameString;
+    string addcredits=**addcreditsString;
 
-    pb.addEntry(addfname,addlname,addphone,addtype);
+    pb.addEntry(addsubject,addschoolname,addcoursename,addcredits);
     output="success";
   }
-  
+
   if(operation=="delete"){
     form_iterator idtodeleteString = cgi.getElement("deleteid");
     string iddelete=**idtodeleteString;
@@ -114,27 +114,26 @@ int main() {
     form_iterator idtoeditString = cgi.getElement("editid");
     string idedit=**idtoeditString;
 
-    form_iterator editfnameString = cgi.getElement("editfname");
-    form_iterator editlnameString = cgi.getElement("editlname");
-    form_iterator editphoneString = cgi.getElement("editphone");
-    form_iterator edittypeString = cgi.getElement("edittype");
+    form_iterator editsubjectString = cgi.getElement("editfname");
+    form_iterator editschoolnameString = cgi.getElement("editlname");
+    form_iterator editcoursenameString = cgi.getElement("editphone");
+    form_iterator editcreditsString = cgi.getElement("edittype");
 
-    string editfname=**editfnameString;
-    string editlname=**editlnameString;
-    string editphone=**editphoneString;
-    string edittype=**edittypeString;
+    string editsubject=**editsubjectString;
+    string editschoolname=**editschoolnameString;
+    string editcoursename=**editcoursenameString;
+    string editcredits=**editcreditsString;
 
 
-    pb.editEntry(idedit,editfname,editlname,editphone,edittype);
+    pb.editEntry(idedit,editsubject,editschoolname,editcoursename,editcredits);
     output="success";
   }
-  
+
   /* send back the results */
   cout << "Content-Type: text/plain\n\n";
 
   cout << output << endl;
-  
-  
+
+
   return 0;
 }
-

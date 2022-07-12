@@ -34,8 +34,6 @@ function processResults(results) {
     console.log("Results:"+results);
     $('#searchresults').empty();
     $('#searchresults').append(buildTable(results));
-    $(".edit").click(processEdit);
-    $(".delete").click(processDelete);
 }
 
 function clearResults() {
@@ -46,7 +44,7 @@ function getMatches(){
     $('.editdata').hide();
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?find='+$('#search').val()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?find='+$('#search').val()+'&operation='+operation,
 	dataType: 'text',
 	success: processResults,
 	error: function(){alert("Error: Something went wrong");}

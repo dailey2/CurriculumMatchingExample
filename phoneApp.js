@@ -44,7 +44,7 @@ function getMatches(){
     $('.editdata').hide();
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?find='+$('#search').val()+'&operation='+operation,
+	url: '/cgi-bin/skon_phoneAppComplete.cgi?find='+$('#search').val()+'&operation='+operation,
 	dataType: 'text',
 	success: processResults,
 	error: function(){alert("Error: Something went wrong");}

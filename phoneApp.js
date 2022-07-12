@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('.editdata').hide();
     $("#search-btn").click(getMatches);
     $("#add-btn").click(addEntry);
-    operation = "Find Last";
+    operation = "Find School";
     $("#clear").click(clearResults);
 
     $(".dropdown-menu a").click(function(){
@@ -54,10 +54,10 @@ function buildTable(list) {
     } else if (a.length == 1) {
 	return "<h3>Nothing Found</h3>";
     } else {
-	var result = '<table class="w3-table-all w3-hoverable" border="2"><tr><th>First</th><th>Last</th><th>Phone</th><th>Type</th><th>Action</th><tr>';
+	var result = '<table class="w3-table-all w3-hoverable" border="2"><tr><th>Subject</th><th>School</th><th>Course</th><th>Credits</th><th>Action</th><tr>';
 	var aLen = a.length;
 	for (var i = 1; i < aLen; i+=5) {
-	    result += "<tr><td class='first'>"+a[i]+"</td><td class='last'>"+a[i+1]+"</td><td class='phone'>"+a[i+2]+"</td><td class='type'>"+a[i+3]+"</td>";
+	    result += "<tr><td class='subject'>"+a[i]+"</td><td class='schoolName'>"+a[i+1]+"</td><td class='courseName'>"+a[i+2]+"</td><td class='credits'>"+a[i+3]+"</td>";
 	    result += "<td><button type='button' ID='"+a[i+4]+"' class='btn btn-primary btn-sm edit'>Edit</button> ";
 	    result += "<button type='button' ID='"+a[i+4]+"' class='btn btn-primary btn-sm delete'>Delete</button></td></tr>";
 	}
@@ -74,24 +74,24 @@ function processEdit(){
     $("#edit-btn").click(editEntry);
     console.log("Edit Record: " + $(this).attr('ID'));
     var row=$(this).parents("tr");
-    console.log("First name of record: "+ $(row).find('.first').text()+":"+$(row).find('.type').text());
+    console.log("Subject: "+ $(row).find('.subject').text()+":"+$(row).find('.type').text());
     editid=$(this).attr('ID');
 
-    $('#editfirst').val( $(row).find('.first').text());
-    $('#editlast').val( $(row).find('.last').text());
-    $('#editphone').val( $(row).find('.phone').text());
-    $('#edittype').text( $(row).find('.type').text());
+    $('#editsubject').val( $(row).find('.first').text());
+    $('#editschoolname').val( $(row).find('.last').text());
+    $('#editcoursename').val( $(row).find('.phone').text());
+    $('#editcredits').text( $(row).find('.type').text());
 }
 
 function editDone() {
-    $('#editmessage').text($('#editfirst').val()+" "+$('#editlast').val()+ " SAVED");
+    $('#editmessage').text($('#editsubject').val()+" "+$('#editschoolname').val()+ " SAVED");
 }
 function editEntry(){
     console.log("Attempting to edit an entry");
-    console.log("Firstname:" + $('#editfirst').val() + "ID:" + editid);
+    console.log("Subject:" + $('#editsubject').val() + "ID:" + editid);
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?editid='+editid +'&editfname='+$('#editfirst').val()+'&editlname='+$('#editlast').val()+'&editphone='+$('#editphone').val()+'&edittype='+$('#edittype').text()+'&operation=edit',
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?editid='+editid +'&editfname='+$('#editfirst').val()+'&editlname='+$('#editlast').val()+'&editphone='+$('#editphone').val()+'&edittype='+$('#edittype').text()+'&operation=edit',
 	dataType: 'text',
 	success: editDone(),
 	error: function(){alert("Error: Something went wrong");}
@@ -104,7 +104,7 @@ function processDelete(){
     $('#searchresults').empty();
     var id=$(this).attr('ID');
     $.ajax({
-	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?deleteid='+$(this).attr('ID')+'&operation=delete',
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?deleteid='+$(this).attr('ID')+'&operation=delete',
 	dataType: 'text',
 	success: function(){alert("Deleted Record: " +id );},
 	error: function(){alert("Error: Something went wrong");}
@@ -126,7 +126,7 @@ function getMatches(){
     $('.editdata').hide();
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?find='+$('#search').val()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?find='+$('#search').val()+'&operation='+operation,
 	dataType: 'text',
 	success: processResults,
 	error: function(){alert("Error: Something went wrong");}
@@ -148,7 +148,7 @@ function addEntry(){
     console.log("Firstname:" + $('#addfirst').val());
     $('#searchresults').empty();
     $.ajax({
-	url: '/cgi-bin/dailey2_phoneAppComplete.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
+	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?afname='+$('#addfirst').val()+'&alname='+$('#addlast').val()+'&aphone='+$('#addphone').val()+'&atype='+$('#addtype').text()+'&operation='+operation,
 	dataType: 'text',
 	success: processAdd,
 	error: function(){alert("Error: Something went wrong");}

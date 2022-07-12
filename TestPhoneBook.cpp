@@ -32,8 +32,8 @@ int main(){
         for (int i = 0; i<pbResults.size(); i++) {
         	cout << pbResults.at(i).ID << ". "
                << pbResults.at(i).subject << " "
-        	     << pbResults.at(i).schoolName << " "
-        	     << pbResults.at(i).courseName << " "
+        	     << pbResults.at(i).school << " "
+        	     << pbResults.at(i).course << " "
         	     << pbResults.at(i).credits
         	     << endl;
         }
@@ -48,8 +48,8 @@ int main(){
         for (int i = 0; i<pbResults.size(); i++) {
           cout << pbResults.at(i).ID << ". "
              << pbResults.at(i).subject << " "
-        	   << pbResults.at(i).schoolName << " "
-        	   << pbResults.at(i).courseName << " "
+        	   << pbResults.at(i).school << " "
+        	   << pbResults.at(i).course << " "
         	   << pbResults.at(i).credits
         	   << endl;
         }
@@ -62,8 +62,8 @@ int main(){
         for (int i = 0; i<pbResults.size(); i++) {
           cout << pbResults.at(i).ID << ". "
           << pbResults.at(i).subject << " "
-    	    << pbResults.at(i).schoolName << " "
-    	    << pbResults.at(i).courseName << " "
+    	    << pbResults.at(i).school << " "
+    	    << pbResults.at(i).course << " "
     	    << pbResults.at(i).credits
     	    << endl;
         }

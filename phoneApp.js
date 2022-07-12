@@ -46,7 +46,7 @@ function getMatches(){
     $.ajax({
 	url: '/cgi-bin/dailey2_CurriculumMatchingExample.cgi?find='+$('#search').val()+'&operation='+operation,
 	dataType: 'text',
-	success: processResults,
+	success: processResults(),
 	error: function(){alert("Error: Something went wrong");}
     });
 }

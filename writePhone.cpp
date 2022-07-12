@@ -28,7 +28,7 @@ int main()
   const string user(USER);
   const string database(DB);
   string pass;
-  
+
   cout << "Connector/C++ Phone Book example" << endl;
   cout << "Enter password for " << user << ":";
   cin >> pass;
@@ -41,28 +41,28 @@ int main()
     con->setSchema(database);
     std::auto_ptr<sql::Statement> stmt(con->createStatement());
 
-    string first, last, phone, type;
+    string subject, school, course, credits;
     do {
-      cout << " Enter first name (nothing to end):";
-      getline(cin,first);
-      if (first.length()>0) {
-	cout << " Enter last name:";
-	getline(cin,last);
-	cout << " Enter phone #:";
-	getline(cin,phone);
-	cout << " Enter type:";
-	getline(cin,type);
+      cout << " Enter subject name (nothing to end):";
+      getline(cin,subject);
+      if (subject.length()>0) {
+	cout << " Enter school name:";
+	getline(cin,school);
+	cout << " Enter course name:";
+	getline(cin,course);
+	cout << " Enter credits:";
+	getline(cin,credits);
 
 	// We need not check the return value explicitly. If it indicates
 	// an error, Connector/C++ generates an exception.
-	stmt->execute("CALL add_phone('"+first+"', '"+last+"', '"+phone+"', '"+type+"')");
+	stmt->execute("CALL add_phone('"+subject+"', '"+school+"', '"+course+"', '"+credits+"')");
       }
-    } while (first.length() > 0);
-      
+    } while (subject.length() > 0);
+
   } catch (sql::SQLException &e) {
 	/*
 	  MySQL Connector/C++ throws three different exceptions:
-	  
+
 	  - sql::MethodNotImplementedException (derived from sql::SQLException)
 	  - sql::InvalidArgumentException (derived from sql::SQLException)
 	  - sql::SQLException (derived from std::runtime_error)
@@ -73,10 +73,10 @@ int main()
     cout << "# ERR: " << e.what();
     cout << " (MySQL error code: " << e.getErrorCode();
     cout << ", SQLState: " << e.getSQLState() << " )" << endl;
-    
+
     return EXIT_FAILURE;
   }
- 
+
   cout << "Done." << endl;
   return EXIT_SUCCESS;
 }

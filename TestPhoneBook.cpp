@@ -23,48 +23,48 @@ int main(){
 
     while (o!='7') {
       if (o=='1') {
-        cout << "Enter first name to find:";
-        string firstMatch;
-        cin >> firstMatch;
+        cout << "Enter subject to find:";
+        string subjectMatch;
+        cin >> subjectMatch;
 
-        pbResults = pb.findBySubject(firstMatch);
+        pbResults = pb.findBySubject(subjectMatch);
 
         for (int i = 0; i<pbResults.size(); i++) {
         	cout << pbResults.at(i).ID << ". "
-               << pbResults.at(i).first << " "
-        	     << pbResults.at(i).last << " "
-        	     << pbResults.at(i).phone << " "
-        	     << pbResults.at(i).type
+               << pbResults.at(i).subject << " "
+        	     << pbResults.at(i).schoolName << " "
+        	     << pbResults.at(i).courseName << " "
+        	     << pbResults.at(i).credits
         	     << endl;
         }
       } else if (o=='2') {
 
-        cout << "Enter last name to find:";
-        string lastMatch;
-        cin >> lastMatch;
+        cout << "Enter school to find:";
+        string schoolMatch;
+        cin >> schoolMatch;
 
-        pbResults = pb.findBySchool(lastMatch);
+        pbResults = pb.findBySchool(schoolMatch);
 
         for (int i = 0; i<pbResults.size(); i++) {
           cout << pbResults.at(i).ID << ". "
-             << pbResults.at(i).first << " "
-        	   << pbResults.at(i).last << " "
-        	   << pbResults.at(i).phone << " "
-        	   << pbResults.at(i).type
+             << pbResults.at(i).subject << " "
+        	   << pbResults.at(i).schoolName << " "
+        	   << pbResults.at(i).courseName << " "
+        	   << pbResults.at(i).credits
         	   << endl;
         }
       } else if (o=='3') {
-        cout << "Enter type to find:";
-        string typeMatch;
-        cin >> typeMatch;
-        pbResults = pb.findByCourse(typeMatch);
+        cout << "Enter course to find:";
+        string courseMatch;
+        cin >> courseMatch;
+        pbResults = pb.findByCourse(courseMatch);
 
         for (int i = 0; i<pbResults.size(); i++) {
           cout << pbResults.at(i).ID << ". "
-          << pbResults.at(i).first << " "
-    	    << pbResults.at(i).last << " "
-    	    << pbResults.at(i).phone << " "
-    	    << pbResults.at(i).type
+          << pbResults.at(i).subject << " "
+    	    << pbResults.at(i).schoolName << " "
+    	    << pbResults.at(i).courseName << " "
+    	    << pbResults.at(i).credits
     	    << endl;
         }
       } else if (o=='4') {

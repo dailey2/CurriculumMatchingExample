@@ -92,7 +92,7 @@ int main() {
     form_iterator asubjectString = cgi.getElement("asubject");
     form_iterator aschoolnameString = cgi.getElement("aschoolname");
     form_iterator acoursenameString = cgi.getElement("acoursename");
-    form_iterator addtypeString = cgi.getElement("acredits");
+    form_iterator acreditsString = cgi.getElement("acredits");
 
     string addsubject=**asubjectString;
     string addschoolname=**aschoolnameString;

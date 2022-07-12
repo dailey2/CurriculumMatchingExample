@@ -3,6 +3,7 @@
 #include "PhoneBook.h"
 #include "PhoneEntry.h"
 
+//Retreive data from sql database
 PhoneBook::PhoneBook() {
 
 }

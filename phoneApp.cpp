@@ -88,47 +88,6 @@ int main() {
     }
   }
 
-  if(operation=="Add Entry"){
-    form_iterator asubjectString = cgi.getElement("asubject");
-    form_iterator aschoolnameString = cgi.getElement("aschoolname");
-    form_iterator acoursenameString = cgi.getElement("acoursename");
-    form_iterator acreditsString = cgi.getElement("acredits");
-
-    string addsubject=**asubjectString;
-    string addschoolname=**aschoolnameString;
-    string addcoursename=**acoursenameString;
-    string addcredits=**acreditsString;
-
-    pb.addEntry(addsubject,addschoolname,addcoursename,addcredits);
-    output="success";
-  }
-
-  if(operation=="delete"){
-    form_iterator idtodeleteString = cgi.getElement("deleteid");
-    string iddelete=**idtodeleteString;
-
-    pb.deleteEntry(iddelete);
-    output="success";
-  }
-  if(operation=="edit"){
-    form_iterator idtoeditString = cgi.getElement("editid");
-    string idedit=**idtoeditString;
-
-    form_iterator editsubjectString = cgi.getElement("editfname");
-    form_iterator editschoolnameString = cgi.getElement("editlname");
-    form_iterator editcoursenameString = cgi.getElement("editphone");
-    form_iterator editcreditsString = cgi.getElement("edittype");
-
-    string editsubject=**editsubjectString;
-    string editschoolname=**editschoolnameString;
-    string editcoursename=**editcoursenameString;
-    string editcredits=**editcreditsString;
-
-
-    pb.editEntry(idedit,editsubject,editschoolname,editcoursename,editcredits);
-    output="success";
-  }
-
   /* send back the results */
   cout << "Content-Type: text/plain\n\n";
 
